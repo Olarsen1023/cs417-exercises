@@ -14,3 +14,11 @@ def test_is_weekend_weekday():
 def test_days_between_invalid_format():
     with pytest.raises(ValueError):
         days_between("not-a-date", "2025-03-15")
+def test_if_day_ahead(format_relative):
+    assert format_relative("2026-02-8") == "in 2 days"
+
+def test_if_day_ago(format_relative):
+    assert format_relative("2026-02-4") == "2 days ago"
+
+def test_if_today(format_relative):
+    assert format_relative("2026-02-6") == "today"
